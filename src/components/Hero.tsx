@@ -1,105 +1,92 @@
 import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
+import { Suspense } from 'react';
 import ChessScene from './ChessScene';
 import { ChevronRight, Play } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#05070D]">
-      {/* 3D Background Canvas */}
-      <div className="absolute inset-0 z-0 opacity-80 mix-blend-screen">
+    <section className="relative w-full h-screen flex items-center overflow-hidden bg-[#050505]">
+      {/* 3D Background Canvas on the right side */}
+      <div className="absolute inset-y-0 right-0 w-full md:w-[60%] z-0">
         <Canvas camera={{ position: [0, 2, 8], fov: 45 }}>
-          <ChessScene />
+          <Suspense fallback={null}>
+            <ChessScene />
+          </Suspense>
         </Canvas>
+        
+        {/* Cinematic Fade Gradient to blend 3D canvas with the solid dark background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none" />
       </div>
 
-      {/* Gradient Overlays for depth and readability */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-[#05070D]/50 to-[#05070D]" />
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#05070D] via-transparent to-[#05070D]" />
-
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center mt-20">
+      {/* Hero Content - Left Aligned */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col items-start mt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 glass mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-none border-l-2 border-[#D4AF37] mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse" />
-          <span className="text-sm font-medium text-gray-300">v2.0 Grandmaster Engine Live</span>
+          
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
+          className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1] text-white"
         >
-          Master Chess Like a <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#AA3BFF] to-[#00F0FF] bg-[length:200%_auto] animate-gradient">
-            Grandmaster
-          </span>
+          Master Chess <br />
+          Like a <span className="text-[#D4AF37]">Grandmaster.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
-          className="max-w-2xl text-lg md:text-xl text-gray-400 mb-10"
+          className="max-w-xl text-lg md:text-xl text-[#A0A0A0] font-light mb-10 leading-relaxed"
         >
-          Train with AI-powered analysis, immersive 3D lessons, and next-generation interactive learning.
+          Immerse yourself in a luxury AI-powered chess universe. Analyze games with unprecedented depth and cinematic elegance.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
-          className="flex flex-col sm:flex-row items-center gap-4"
+          className="flex flex-col sm:flex-row items-center gap-6"
         >
-          <button className="group relative px-8 py-4 rounded-full bg-white text-black font-semibold text-lg overflow-hidden transition-all hover:scale-105">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#00F0FF] to-[#AA3BFF] opacity-0 group-hover:opacity-100 transition-opacity" />
-            <span className="relative flex items-center gap-2 group-hover:text-white transition-colors">
-              Start Learning <ChevronRight className="w-5 h-5" />
+          <button className="group relative px-8 py-4 bg-[#D4AF37] text-black font-semibold text-lg overflow-hidden transition-all hover:bg-[#F0C84B]">
+            <span className="relative flex items-center gap-2 uppercase tracking-wider text-sm">
+              Start Learning <ChevronRight className="w-4 h-4" />
             </span>
           </button>
           
-          <button className="px-8 py-4 rounded-full glass border border-white/10 text-white font-semibold text-lg flex items-center gap-2 hover:bg-white/5 transition-all hover:scale-105">
-            <Play className="w-5 h-5 fill-current" /> Play AI Match
+          <button className="px-8 py-4 text-[#F5F5F0] font-semibold text-sm uppercase tracking-wider flex items-center gap-2 hover:text-[#D4AF37] transition-all border-b border-transparent hover:border-[#D4AF37]">
+            <Play className="w-4 h-4 fill-current" /> Play AI Match
           </button>
         </motion.div>
 
-        {/* Animated Stats */}
+        {/* Minimal Animated Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-t border-white/10 pt-10"
+          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12"
         >
           {[
-            { label: 'Active Players', value: '1M+' },
+            { label: 'Active Masters', value: '1M+' },
             { label: 'Games Analyzed', value: '50M+' },
-            { label: 'Elo Improvement', value: '+400' },
-            { label: 'AI Engine Rating', value: '3500+' },
+            { label: 'Avg Rating Gain', value: '+400' },
+            { label: 'Engine ELO', value: '3500+' },
           ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <span className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">{stat.value}</span>
-              <span className="text-sm text-gray-500 uppercase tracking-wider">{stat.label}</span>
+            <div key={i} className="flex flex-col items-start border-l border-white/10 pl-4">
+              <span className="text-2xl font-heading font-bold text-[#F5F5F0] mb-1">{stat.value}</span>
+              <span className="text-xs text-[#888888] uppercase tracking-widest">{stat.label}</span>
             </div>
           ))}
         </motion.div>
       </div>
-
-      {/* Custom CSS for gradient animation inside Hero */}
-      <style>{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-        }
-      `}</style>
     </section>
   );
 }

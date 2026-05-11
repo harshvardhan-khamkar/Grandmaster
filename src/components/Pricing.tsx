@@ -24,7 +24,7 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-            Unlock your full <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#AA3BFF]">Potential</span>
+            Unlock your full <span className="text-[#D4AF37]">Potential</span>
           </h2>
         </div>
 
@@ -36,12 +36,12 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.2 }}
-              className={`relative glass rounded-3xl p-8 overflow-hidden ${
-                plan.highlighted ? 'border-[#AA3BFF]/50 shadow-[0_0_30px_rgba(170,59,255,0.2)]' : 'border-white/10'
+              className={`relative glass rounded-none p-8 overflow-hidden ${
+                plan.highlighted ? 'border-[#D4AF37] shadow-[0_10px_30px_rgba(212,175,55,0.15)]' : 'border-white/5'
               }`}
             >
               {plan.highlighted && (
-                <div className="absolute top-0 right-0 bg-gradient-to-l from-[#AA3BFF] to-[#00F0FF] text-xs font-bold px-4 py-1 rounded-bl-lg text-black">
+                <div className="absolute top-0 right-0 bg-[#D4AF37] text-xs font-bold px-4 py-1 rounded-bl-none text-[#050505]">
                   RECOMMENDED
                 </div>
               )}
@@ -53,7 +53,7 @@ export default function Pricing() {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((f, j) => (
                   <li key={j} className="flex items-center gap-3 text-sm text-gray-300">
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.highlighted ? 'bg-[#00F0FF]/20 text-[#00F0FF]' : 'bg-white/10 text-white'}`}>
+                    <div className={`w-5 h-5 flex items-center justify-center flex-shrink-0 ${plan.highlighted ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'bg-white/5 text-white'}`}>
                       <Check className="w-3 h-3" />
                     </div>
                     {f}
@@ -61,10 +61,10 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button className={`w-full py-4 rounded-xl font-semibold transition-all ${
+              <button className={`w-full py-4 rounded-none font-semibold transition-all uppercase tracking-widest text-sm ${
                 plan.highlighted 
-                  ? 'bg-gradient-to-r from-[#00F0FF] to-[#AA3BFF] text-black hover:opacity-90 shadow-lg shadow-[#AA3BFF]/25' 
-                  : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
+                  ? 'bg-[#D4AF37] text-[#050505] hover:bg-[#F0C84B] shadow-lg shadow-[#D4AF37]/20' 
+                  : 'bg-white/5 text-[#F5F5F0] hover:bg-white/10 border border-white/10'
               }`}>
                 Choose {plan.name}
               </button>

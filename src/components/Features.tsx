@@ -16,7 +16,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-            Everything you need to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#AA3BFF] to-[#00F0FF]">dominate</span>
+            Everything you need to <span className="text-[#D4AF37]">dominate</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             A comprehensive suite of tools wrapped in a stunning, distraction-free interface designed specifically for serious chess improvement.
@@ -31,13 +31,13 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative glass-card p-8 rounded-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-300"
+              className="group relative glass-card p-8 rounded-none overflow-hidden hover:-translate-y-2 transition-transform duration-300 border-t-2 border-transparent hover:border-[#D4AF37]"
             >
               {/* Hover Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#AA3BFF]/20 to-[#00F0FF]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#00F0FF] mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-[#050505] border border-white/10 flex items-center justify-center text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform">
                   <feat.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-white mb-3">{feat.title}</h3>
